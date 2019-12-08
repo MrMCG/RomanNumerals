@@ -35,7 +35,7 @@ int main()
 
 	while (true)
 	{
-		std::cout << "Enter a Roman numeral: " << std::flush;
+		std::cout << "Enter a Roman Numeral: " << std::flush;
 		std::getline(std::cin, userInput);
 
 		if (userInput == "exit")

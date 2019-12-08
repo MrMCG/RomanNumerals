@@ -21,7 +21,7 @@ INSTANTIATE_TEST_SUITE_P(Parameterised, KnownValuesTest,
 		KnownValue{ "cC", true, true, 200 },
 		KnownValue{ "dD", true, false, 1000 },
 		KnownValue{ "mM", true, true, 2000 },
-		// repeating/non standard
+		// non standard
 		KnownValue{ "iiiii", true, false, 5 },
 		KnownValue{ "vvvvv", true, false, 25 },
 		KnownValue{ "xxxxx", true, false, 50 },
@@ -29,6 +29,8 @@ INSTANTIATE_TEST_SUITE_P(Parameterised, KnownValuesTest,
 		KnownValue{ "ccccc", true, false, 500 },
 		KnownValue{ "ddddd", true, false, 2500 },
 		KnownValue{ "mmmmm", true, false, 5000 },
+		KnownValue{ "ivxlcdm", true, false, 334 },
+		KnownValue{ "mmmxxxllil", true, false, 3159 },
 		// known values
 		KnownValue{ "i", true, true, 1 },
 		KnownValue{ "iii", true, true, 3 },
@@ -49,6 +51,7 @@ INSTANTIATE_TEST_SUITE_P(Parameterised, KnownValuesTest,
 		KnownValue{ "xviii", true, true, 18 },
 		KnownValue{ "xix", true, true, 19 },
 		KnownValue{ "xx", true, true, 20 },
+
 		KnownValue{ "XXXVIII", true, true, 38 },
 		KnownValue{ "XLVII", true, true, 47 },
 		KnownValue{ "LXXXVIII", true, true, 88 },
@@ -72,9 +75,17 @@ TEST(RomanNumeralConverter, badInput)
 	std::string characters{ " !\"#$%&\'()*+,-./0123456789:;<=>?@ABEFGHJKNOPQRSTUWYZ[\\]^_`abefghjknopqrstuwyz{|}~" };
 	for (char const c : characters)
 	{
-		RomanNumeralConverter converter( std::string(1,c) );
-		EXPECT_FALSE(converter.isValid());
-		EXPECT_FALSE(converter.isStandard());
-		EXPECT_EQ(converter.toDecimal(), -1);
+		{
+			RomanNumeralConverter converter(std::string(1, c));
+			EXPECT_FALSE(converter.isValid());
+			EXPECT_FALSE(converter.isStandard());
+			EXPECT_EQ(converter.toDecimal(), -1);
+		}
+		{
+			RomanNumeralConverter converter(std::string("i" + c));
+			EXPECT_FALSE(converter.isValid());
+			EXPECT_FALSE(converter.isStandard());
+			EXPECT_EQ(converter.toDecimal(), -1);
+		}
 	}
 }

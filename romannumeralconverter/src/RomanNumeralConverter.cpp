@@ -7,7 +7,7 @@
 namespace
 {
 	// match only the letters used in roman numerals
-	const std::regex IsValidRegex{ "^[iIvVxXlLcCdDmM].*$" };
+	const std::regex IsValidRegex{ "^[iIvVxXlLcCdDmM]+$" };
 
 	// match only standard rules
 	const std::regex IsStandardRegex{ "^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$" };
