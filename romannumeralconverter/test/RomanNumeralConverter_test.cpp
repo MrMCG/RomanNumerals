@@ -53,7 +53,8 @@ INSTANTIATE_TEST_SUITE_P(Parameterised, KnownValuesTest,
 		KnownValue{ "XLVII", true, true, 47 },
 		KnownValue{ "LXXXVIII", true, true, 88 },
 		KnownValue{ "DCCC", true, true, 800 },
-		KnownValue{ "LXXXIX", true, true, 89 }
+		KnownValue{ "LXXXIX", true, true, 89 },
+		KnownValue{ "CCXLVI", true, true, 246 }
 	));
 
 TEST_P(KnownValuesTest, value)
