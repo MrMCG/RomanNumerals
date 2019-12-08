@@ -21,7 +21,7 @@ std::string summary()
 		<< " XIV = 14" << '\n'
 		<< " XL  = 40" << '\n'
 		<< "The 'Standard' set of rules should be followed when creating roman numerals" << '\n'
-		<< "If If these rules are not followed, the conversion may be incorrect" << '\n';
+		<< "If these rules are not followed, the conversion may be incorrect" << '\n';
 
 	return stream.str();
 }
