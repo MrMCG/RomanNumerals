@@ -50,6 +50,12 @@ int main()
 
 		RomanNumeralConverter converter( userInput );
 
+		if (!converter.init())
+		{
+			std::cerr << "error initialising RomanNumeralConverter" << std::endl;
+			continue;
+		}
+
 		// this will provide basic input validation
 		if (!converter.isValid())
 		{

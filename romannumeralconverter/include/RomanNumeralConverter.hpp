@@ -5,8 +5,9 @@
 class RomanNumeralConverter
 {
 public:
-	RomanNumeralConverter( std::string const& toConvert );
+	RomanNumeralConverter( std::string toConvert );
 
+	bool init();
 	bool isValid() const;
 	bool isStandard() const;
 	int toDecimal() const;

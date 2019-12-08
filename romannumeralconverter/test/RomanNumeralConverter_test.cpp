@@ -65,6 +65,7 @@ TEST_P(KnownValuesTest, value)
 	auto param = GetParam();
 
 	RomanNumeralConverter converter( std::get<0>(param) );
+	ASSERT_TRUE(converter.init());
 	EXPECT_EQ( converter.isValid(), std::get<1>(param) );
 	EXPECT_EQ( converter.isStandard(), std::get<2>(param) );
 	EXPECT_EQ( converter.toDecimal(), std::get<3>(param) );
@@ -77,12 +78,16 @@ TEST(RomanNumeralConverter, badInput)
 	{
 		{
 			RomanNumeralConverter converter(std::string(1, c));
+			ASSERT_TRUE(converter.init());
 			EXPECT_FALSE(converter.isValid());
+
 			EXPECT_FALSE(converter.isStandard());
 			EXPECT_EQ(converter.toDecimal(), -1);
 		}
 		{
+			// include a valid char and it should still fail
 			RomanNumeralConverter converter(std::string("i" + c));
+			ASSERT_TRUE(converter.init());
 			EXPECT_FALSE(converter.isValid());
 			EXPECT_FALSE(converter.isStandard());
 			EXPECT_EQ(converter.toDecimal(), -1);
